@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Demo Javascript practice 1" />
+    <meta name="keywords" content="JavaScript, Practice1" />
+    <meta name="author" content="author name" />
+    <meta
+      property="og:image"
+      content="https://cdn-icons-png.flaticon.com/512/5086/5086786.png"
+    />
+    <meta
+      property="og:description"
+      content="Demo Javascript practice 1 (Basic)"
+    />
+    <meta property="og:title" content="Demo | JavaScript" />
+
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/5086/5086786.png"
+    />
+    <title>Demo | JavaScript</title>
+    <link rel="stylesheet" href="styles/output.css" />
+    <script src="scripts/app.js" defer></script>
+  </head>
+  <body>
+    <main class="w-[80%] flex flex-col gap-8 mx-auto py-12">
+      <section class="w-full">
+        <h1 class="text-center text-2xl font-bold mb-8">Quote</h1>
+        <section class="flex justify-between">
+          <form action="" class="w-[15%]">
+            <select
+              id="main-opiton"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            >
+              <option value="" selected>Choose an option</option>
+              <option value="id">Id</option>
+              <option value="title">Title</option>
+            </select>
+          </form>
+          <form id="searchForm" class="w-[83%] flex flex-col">
+            <div class="flex gap-4">
+              <input
+                name="search-quote"
+                disabled
+                type="text"
+                id="search-quote"
+                placeholder="Search Anything..."
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5"
+              />
+
+              <button
+                type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              >
+                Search
+              </button>
+            </div>
+            <p class="text-red-600 hidden" id="error-message">
+              *Item not found!!
+            </p>
+          </form>
+        </section>
+      </section>
+
+      <section class="w-full hidden" id="result-container">
+        <h1 class="text-center text-2xl font-bold mb-8">Quote List</h1>
+
+        <section class="flex gap-4 items-center">
+          <div class="w-[30%] h-56">
+            <img
+              id="result-img"
+              class="w-full h-full object-center object-cover"
+              src="https://images.unsplash.com/photo-1525799215606-b78e3a3bf666?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="my image"
+            />
+          </div>
+          <div>
+            <h2 id="result-title">Pay attention on your step</h2>
+            <p id="result-description">
+              It's okay if you don't know what it will look like at the TOP.
+              Take it ONE STEP at a time.
+            </p>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
