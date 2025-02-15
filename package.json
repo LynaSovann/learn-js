@@ -5,6 +5,7 @@
   "author": "lyna",
   "license": "MIT",
   "scripts": {
+    "build": "yarn tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css",
     "watch": "yarn tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css --watch"
   },
   "dependencies": {
