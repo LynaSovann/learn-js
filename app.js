@@ -1,12 +1,12 @@
 const BASE_URL = "https://jsonplaceholder.typicode.com/users";
 
-const addNewUser = (user) => {
-  fetch(BASE_URL, {
+const addNewUser = async (body) => {
+  const res = await fetch(BASE_URL, {
     method: "POST",
-    body: JSON.stringify(user)
-  })
-    .then((data) => data.json())
-    .then((data) => console.log(data));
+    body: JSON.stringify(body),
+  });
+  const user = await res.json();
+  console.log(await user);
 };
 
 addNewUser({

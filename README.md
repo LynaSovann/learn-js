@@ -11,6 +11,7 @@ const getAllUsers = () => {
     .then((data) => data.json())
     .then((user) => console.log(user));
 };
+getAllUsers();
 ```
 Fetch all users using fetch API with async/await
 ```js
@@ -29,6 +30,7 @@ const getOneUser = (userId) => {
     .then((data) => data.json())
     .then((data) => console.log(data));
 };
+getOneUser(1);
 ```
 Fetch one user using fetch API with async/await
 ```js
@@ -37,8 +39,10 @@ const getOneUser = async (userId) => {
   const jsonData = await user.json();
   console.log(await jsonData);
 };
+getOneUser(1);
 ```
 ### Add new user
+Add new user using fetch API then...catch
 ```js
 const addNewUser = (user) => {
   fetch(BASE_URL, {
@@ -59,7 +63,30 @@ addNewUser({
   company: {},
 });
 ```
-Result 
+Add new user using fetch API with async/await
+```js
+const addNewUser = async (body) => {
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    body: JSON.stringify(body),
+  });
+  const user = await res.json();
+  console.log(await user);
+};
+
+addNewUser({
+  name: "Lyna",
+  username: "lyna_sovann",
+  email: "sovannlyna2004@gmail.com",
+  address: {},
+  phone: "0123456789",
+  website: "myblog.fake.website",
+  company: {},
+});
+```
+#### Result 
 ![Alt text](imgs/add-result.png)
+
+
 
 ## XML HttpRequest
