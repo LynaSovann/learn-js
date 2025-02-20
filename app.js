@@ -1,20 +1,10 @@
 const BASE_URL = "https://jsonplaceholder.typicode.com/users";
 
-const addNewUser = async (body) => {
-  const res = await fetch(BASE_URL, {
-    method: "POST",
-    body: JSON.stringify(body),
+const deleteUser = async (userId) => {
+  const res = await fetch(`${BASE_URL}/${userId}`, {
+    method: "DELETE",
   });
-  const user = await res.json();
-  console.log(await user);
+  const jsonRes = await res.json();
+  console.log(await jsonRes);
 };
-
-addNewUser({
-  name: "Lyna",
-  username: "lyna_sovann",
-  email: "sovannlyna2004@gmail.com",
-  address: {},
-  phone: "0123456789",
-  website: "myblog.fake.website",
-  company: {},
-});
+deleteUser(1);

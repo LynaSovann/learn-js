@@ -1,10 +1,13 @@
-## fetch API 
+## fetch API
+
 ```bash
 https://jsonplaceholder.typicode.com/users
 ```
 
-### Get all users 
+### Get all users
+
 Fetch all users using fetch API with then...catch
+
 ```js
 const getAllUsers = () => {
   fetch(BASE_URL)
@@ -13,17 +16,22 @@ const getAllUsers = () => {
 };
 getAllUsers();
 ```
+
 Fetch all users using fetch API with async/await
+
 ```js
 const fetchUsers = async () => {
   const users = await fetch(BASE_URL);
   const jsonUsers = await users.json();
-  console.log(await jsonUsers)
+  console.log(await jsonUsers);
 };
 fetchUsers();
 ```
+
 ### Get one user
+
 Fetch one user using fetch API then...catch
+
 ```js
 const getOneUser = (userId) => {
   fetch(`${BASE_URL}/${userId}`)
@@ -32,7 +40,9 @@ const getOneUser = (userId) => {
 };
 getOneUser(1);
 ```
+
 Fetch one user using fetch API with async/await
+
 ```js
 const getOneUser = async (userId) => {
   const user = await fetch(`${BASE_URL}/${userId}`);
@@ -41,18 +51,20 @@ const getOneUser = async (userId) => {
 };
 getOneUser(1);
 ```
+
 ### Add new user
+
 Add new user using fetch API then...catch
+
 ```js
 const addNewUser = (user) => {
   fetch(BASE_URL, {
     method: "POST",
-    body: JSON.stringify(user)
+    body: JSON.stringify(user),
   })
     .then((data) => data.json())
     .then((data) => console.log(data));
 };
-
 addNewUser({
   name: "Lyna",
   username: "lyna_sovann",
@@ -63,7 +75,9 @@ addNewUser({
   company: {},
 });
 ```
+
 Add new user using fetch API with async/await
+
 ```js
 const addNewUser = async (body) => {
   const res = await fetch(BASE_URL, {
@@ -73,7 +87,6 @@ const addNewUser = async (body) => {
   const user = await res.json();
   console.log(await user);
 };
-
 addNewUser({
   name: "Lyna",
   username: "lyna_sovann",
@@ -84,9 +97,44 @@ addNewUser({
   company: {},
 });
 ```
-#### Result 
-![Alt text](imgs/add-result.png)
 
+#### Result
 
+![Add new user result](imgs/add-result.png)
+
+### Delete new user
+
+Delete user by id using fetch API then...catch
+
+```js
+const deleteUser = (userId) => {
+  fetch(`${BASE_URL}/${userId}`, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then((res) => console.log(res));
+};
+deleteUser(1);
+```
+
+Delete user using fetch API with ``async/await`
+
+```js
+const deleteUser = async (userId) => {
+  const res = await fetch(`${BASE_URL}/${userId}`, {
+    method: "DELETE",
+  });
+  const jsonRes = await res.json();
+  console.log(await jsonRes);
+};
+deleteUser(1);
+```
+
+### Result
+
+![Add new user result](imgs/delete-result.png)
+
+## Update user Info
+Update user using fetch API then...catch
 
 ## XML HttpRequest
