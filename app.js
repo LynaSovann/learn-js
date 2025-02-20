@@ -1,8 +1,9 @@
 const BASE_URL = "https://jsonplaceholder.typicode.com/users";
 
-const fetchUsers = async () => {
-  const users = await fetch(BASE_URL);
-  const jsonUsers = await users.json();
-  console.log(await jsonUsers)
+const getOneUser = async (userId) => {
+  const user = await fetch(`${BASE_URL}/${userId}`);
+  const jsonData = await user.json();
+  console.log(await jsonData);
 };
-fetchUsers();
+
+getOneUser(2);

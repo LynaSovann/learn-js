@@ -1,4 +1,7 @@
 ## fetch API 
+```bash
+https://jsonplaceholder.typicode.com/users
+```
 
 ### Get all users 
 Fetch all users using fetch API with then...catch
@@ -18,5 +21,23 @@ const fetchUsers = async () => {
 };
 fetchUsers();
 ```
+### Get one user
+Fetch one user using fetch API then...catch
+```js
+const getOneUser = (userId) => {
+  fetch(`${BASE_URL}/${userId}`)
+    .then((data) => data.json())
+    .then((data) => console.log(data));
+};
+```
+Fetch one user using fetch API with async/await
+```js
+const getOneUser = async (userId) => {
+  const user = await fetch(`${BASE_URL}/${userId}`);
+  const jsonData = await user.json();
+  console.log(await jsonData);
+};
+```
+### 
 
 ## XML HttpRequest
