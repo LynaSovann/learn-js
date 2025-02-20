@@ -98,7 +98,7 @@ addNewUser({
 });
 ```
 
-#### Result
+### Result
 
 ![Add new user result](imgs/add-result.png)
 
@@ -117,7 +117,7 @@ const deleteUser = (userId) => {
 deleteUser(1);
 ```
 
-Delete user using fetch API with ``async/await`
+Delete user using fetch API with async/await
 
 ```js
 const deleteUser = async (userId) => {
@@ -135,6 +135,53 @@ deleteUser(1);
 ![Add new user result](imgs/delete-result.png)
 
 ## Update user Info
+
 Update user using fetch API then...catch
+
+```js
+const updateUser = (userId, body) => {
+  fetch(`${BASE_URL}/${userId}`, {
+    method: "PUT",
+    body: JSON.stringify(body),
+  })
+    .then((data) => data.json())
+    .then((res) => console.log(res));
+};
+updateUser(1, {
+  name: "Lyna",
+  username: "lyna_sovann",
+  email: "sovannlyna2004@gmail.com",
+  address: {},
+  phone: "0123456789",
+  website: "myblog.fake.website",
+  company: {},
+});
+```
+
+Update user using fetch API with async/await
+
+```js
+const updateUser = async (userId, body) => {
+  const res = await fetch(`${BASE_URL}/${userId}`, {
+    method: "PUT",
+    body: JSON.stringify(body),
+  });
+  const jsonRes = await res.json();
+  console.log(await jsonRes);
+};
+updateUser(1, {
+  name: "Lyna",
+  username: "lyna_sovann",
+  email: "sovannlyna2004@gmail.com",
+  address: {},
+  phone: "0123456789",
+  website: "myblog.fake.website",
+  company: {},
+});
+```
+
+### Result
+
+![Update new user info](imgs/update-result.png)
 
 ## XML HttpRequest
