@@ -387,3 +387,153 @@ const fetchAddNewUser = async () => {
 };
 fetchAddNewUser();
 ```
+
+Update user using XMLHttpRequest then...catch
+
+```js
+const fetchUpdateUser = ({ userId, body }) => {
+  const promsie = new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.responseType = "json";
+    req.open("PUT", `${BASE_URL}/${userId}`);
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(req.response);
+      } else {
+        reject({
+          message: "Please try again",
+          error: "Failed to retrive data",
+        });
+      }
+    };
+
+    req.send(JSON.stringify(body));
+  });
+  return promsie;
+};
+fetchUpdateUser({
+  userId: 1,
+  body: {
+    name: "Lyna",
+    username: "lyna_sovann",
+    email: "sovannlyna2004@gmail.com",
+    address: {},
+    phone: "0123456789",
+    website: "myblog.fake.website",
+    company: {},
+  },
+})
+  .then((data) => console.log(data))
+  .catch((e) => console.log(e));
+```
+
+Update user using XMLHttpRequest async/await
+
+```js
+const fetchUpdateUser = ({ userId, body }) => {
+  const promsie = new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.responseType = "json";
+    req.open("PUT", `${BASE_URL}/${userId}`);
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(req.response);
+      } else {
+        reject({
+          message: "Please try again",
+          error: "Failed to retrive data",
+        });
+      }
+    };
+
+    req.send(JSON.stringify(body));
+  });
+  return promsie;
+};
+
+const updateUser = async ({ userId, body }) => {
+  try {
+    const res = await fetchUpdateUser({ userId, body });
+    console.log(await res);
+  } catch (e) {
+    console.log(e);
+  }
+};
+updateUser({
+  userId: 1,
+  body: {
+    name: "Lyna",
+    username: "lyna_sovann",
+    email: "sovannlyna2004@gmail.com",
+    address: {},
+    phone: "0123456789",
+    website: "myblog.fake.website",
+    company: {},
+  },
+});
+```
+
+Delete user using XMLHttpRequest then...catch
+
+```js
+const fetchDeleteUser = (userId) => {
+  const promise = new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("DELETE", `${BASE_URL}/${userId}`);
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(`Delete user with id = ${userId} successfully`);
+      } else {
+        reject({
+          message: "Please try again",
+          error: "Failed to retrive data",
+        });
+      }
+      console.log(req.status);
+      console.log(req.response);
+      resolve(req.response);
+    };
+    req.send();
+  });
+  return promise;
+};
+
+fetchDeleteUser(1)
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+```
+
+Delete user using XMLHttpRequest async/await
+
+```js
+const fetchDeleteUser = (userId) => {
+  const promise = new Promise((resolve, reject) => {
+    const req = new XMLHttpRequest();
+    req.open("DELETE", `${BASE_URL}/${userId}`);
+    req.onload = () => {
+      if (req.status === 200) {
+        resolve(`Delete user with id = ${userId} successfully`);
+      } else {
+        reject({
+          message: "Please try again",
+          error: "Failed to retrive data",
+        });
+      }
+      console.log(req.status);
+      console.log(req.response);
+      resolve(req.response);
+    };
+    req.send();
+  });
+  return promise;
+};
+const deleteUserById = async (userId) => {
+  try {
+    const res = await fetchDeleteUser(userId);
+    console.log(await res);
+  } catch (e) {
+    console.log(e);
+  }
+};
+deleteUserById(1);
+```
